@@ -1,0 +1,20 @@
+#bnr_logo {
+  width: 183px;
+  height: 183px;
+  border-radius: 91.5px;
+  -webkit-border-radius: 91.5px;
+  -moz-border-radius: 91.5px;
+  background: url(http://www.bignerdranch.com/images/bnr-twitter-logo.png) no-repeat;
+}
+
+.round {
+  width: 183px;
+  height: 183px;
+  border-radius: 91.5px;
+  -webkit-border-radius: 91.5px;
+  -moz-border-radius: 91.5px;
+}
+
+.smallish {
+  width: 183px;
+}

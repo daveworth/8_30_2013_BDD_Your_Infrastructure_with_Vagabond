@@ -1,0 +1,296 @@
+head
+  title="BDDing your Infrastructure"
+  meta name="description" content="using Vagabond to test Vagrant"
+  meta name="author"      content="David Worth - dave@bignerdranch.com"
+  meta name="viewport"    content="width=1024, user-scalable=no"
+
+  script src="js/jquery-1.7.2.min.js"
+  script src="js/modernizr.custom.js"
+
+  link rel="stylesheet" href="core/deck.core.css"
+  link rel="stylesheet" href="css/vagabond.css"
+  script src="core/deck.core.js"
+
+  link rel="stylesheet" href="extensions/goto/deck.goto.css"
+  script src="extensions/goto/deck.goto.js"
+
+  link rel="stylesheet" href="extensions/hash/deck.hash.css"
+  script src="extensions/hash/deck.hash.js"
+
+  /link rel="stylesheet" href="extensions/menu/deck.menu.css"
+  /script src="extensions/menu/deck.menu.js"
+
+  link rel="stylesheet" href="extensions/navigation/deck.navigation.css"
+  script src="extensions/navigation/deck.navigation.js"
+
+  /link rel="stylesheet" href="extensions/scale/deck.scale.css"
+  /script src="extensions/scale/deck.scale.js"
+
+  link rel="stylesheet" href="extensions/status/deck.status.css"
+  script src="extensions/status/deck.status.js"
+
+  link rel="stylesheet" href="themes/style/web-2.0.css"
+  /link rel="stylesheet" href="themes/style/swiss.css"
+  /link rel="stylesheet" href="themes/style/neon.css"
+
+  /link rel="stylesheet" href="themes/transition/horizontal-slide.css"
+  /link rel="stylesheet" href="themes/transition/vertical-slide.css"
+
+  javascript:
+    $(function() { $.deck('.slide'); });
+
+body
+  // use .deck-menu if you've enabled the menu extension above
+  /article.deck-container.deck-menu
+  article.deck-container
+    section.slide
+      // Permalinks are available if you've enabled the hash exntension
+      /a.deck-permalink href="." title="Permalink to this slide" #
+      center
+        h2 BDDing your Infrastructure with Vagabond
+        br
+        h3 Or how I learned to stop worrying and Love the virtualization
+        br
+        h4 David Worth - dave@bignerdranch.com
+        img.round src="http://www.bignerdranch.com/images/bnr-twitter-logo.png"
+
+    section.slide
+      h2 Background
+      section.slide
+        p In a previously life... I was a Cowboy Sysadmin
+      section.slide
+        p We had loads of Xen VMs all managed by hand.
+      section.slide
+        p I was pretty good with the duct tape + SVN in order to keep things running
+      section.slide
+        p Found out about Puppet from @ckdake but it's hard and the team was very resistant.
+
+    section.slide
+      h2 Not-So-Secret Agenda
+      section.slide
+        h3 I also like beer.
+      section.slide
+        h4 ... and was asked to do a tech-talk on Belgian Beer
+      section.slide
+        h5 ... but I have to drive.
+
+    section.slide
+      h2 Better Background
+      section.slide
+        p Came to Highgroove and joined a crazy big analytics problem with a ton of AWS Infrastructure.
+      section.slide
+        p Lots of Chef and I was bad with it.
+      section.slide
+        p Even when I got better with it spinning up new hosts would not always work out of the box... 
+      section.slide
+        p And never on a Saturday when I was alone...
+      section.slide
+        p "Testing" all of our recipes was
+        ol
+          li vague
+          li not an option.
+      section.slide
+        p and it made me worse/risk averse!
+
+    section.slide
+      h2 Saison - Saison Dupont
+      h3 Delicious summer beer.
+      img src="http://www.brasserie-dupont.com/dupont/Images/SaisonDupont.jpg"
+
+    section.slide
+      h2 What do you mean by BDD?
+      section.slide
+        p Probably not what you do...
+      section.slide
+        p I care that not only are my chef or puppet configurations "correct" but that they actually do the right thing...
+
+    section.slide
+      h2 Geuze - Drie Fonteinen (Oude Geuze)
+      h3 Blended Lambic (open fermented) beer.  Very funky and awesome
+      img src="http://www.3fonteinen.be/images/stories/flessen/oude-geuze-thumb.png"
+
+    section.slide
+      h2 So what is "the right thing" in this case?
+      ul
+        li Packages are installed
+        li The correct <strong>version</strong> of packages are installed.
+        li Other packages that should be uninstalled actually <strong>are</strong> uninstalled...
+        li Services that should be reachable are actually reachable...
+        li Those services are actually running the correct versions!
+        li Deployed applications are actually working!
+
+    section.slide
+      h2 Trappist Beers
+      h3 Comparing them is hard because they vary so much.
+      h3 So my favorite is Westmalle Tripel
+      img src="http://www.belgianbeercafe.com/sites/default/files/imagecache/beer_detail/westmalletriple.png"
+
+    section.slide
+      h2 The competition - a literature survey.
+      section.slide
+        h3 I'm not the only one to have felt this pain clearly.
+      section.slide
+        p Last year at ArrrrCamp Bernard Grymonpon gave a great talk on <a href="http://vimeo.com/51911896">Testing Chef Recipes</a> - <a href="https://speakerdeck.com/wonko/arrrrcamp-testing-chef">Slidedeck</a>
+      section.slide
+        p <a href="http://acrmp.github.io/foodcritic/"">Foodcritic</a> - a Linter which seems pretty cool but isn't a tester..  more of a style-guide.  Seems like a Good Thing.
+      section.slide
+        p <a href="https://github.com/calavera/rspec-chef">Rspec-chef</a> - Doesn't appear super feature complete and last commit Jan 11, 2012
+      section.slide
+        p <a href="http://acrmp.github.io/chefspec/">chefspec</a> - "ChefSpec runs your cookbook but without actually converging the node that your examples are being executed on." Also seems cool but doesn't meet my needs!
+        section.slide
+          ' To quote Bernard's talk "feels like testing chef, not the recipe"
+      section.slide
+        p <a href="https://github.com/calavera/minitest-chef-handler">minitest-chef-handler</a> seems a lot like what I was shooting for!
+
+    section.slide
+      h2 Abbaye Ale - hs nothing to do with the church really
+      h3 Everyone knows Leffe (and it's GREAT) but have you tried Grimbergen Blonde
+      img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Grimbergen_blonde_-_verre_et_bouteille.jpg/280px-Grimbergen_blonde_-_verre_et_bouteille.jpg"
+
+    section.slide
+      h2 Vagabond
+      section.slide
+        p As usual, anything I do well someone else actually wrote and I enhance a tiny amount.  Profit!
+      section.slide
+        p Originally written by @wfarr during his RailsMachine tenure.  He even <a href="https://speakerdeck.com/wfarr/valiantly-validating-vagrant-with-vagabond">talked</a> about it once.
+      section.slide
+        ul
+          li When I had this idea I bounced it off @alindeman and @vanstee and the latter told me about Vagabond.
+          li When I found it there was a pretty extensive TODO list, and it totally didn't do what I really wanted
+          li I struggled to get it working... and I struggled to understand how it worked
+          li but it was something!
+          li and finally I had an ah-ha moment - specs run from the home directory of the guest!
+
+    section.slide
+      h2 Flemish Red
+      h3 Sour and delicious.  Drink them all.  In particular Rodenbach Grand Cru
+      img src="http://refugesc.com/wp-content/uploads/2010/04/rodenbach-grand-cru.jpg"
+      h3 but.. if you can find it on draught try Duchesse de Bourgogne
+
+    section.slide
+      h2 Vagabond (con't) - the additions
+      section.slide
+        h3 So... what did you do about it?
+      section.slide
+        p I checked off some of the TODO list (there are some hard problems in there! Particularly hard to do in a general way!)
+
+    section.slide
+      h2 Vagabond (con't) - File contents
+      section.slide
+        p File <code>it { should contain &lt;some content&gt; }</code> - actually a lot harder than it sounds
+      section.slide
+        p If you just want a string on a single line <code>file.should contain 'bar'</code> it's not so bad but could be super slow for big files.  You could implement Boyer-Moore.. how has that not been added to StdLib if the Sieve of Erosthosthenes has been?
+      section.slide
+        p What about regexps?  What about multiline regexps?  On HUGE files?
+      section.slide
+        p Hard to do "right" (hard to define "right"!)  Not so terrible if you are willing to do something and fail...
+
+    section.slide
+      h2 Tripel Karmeliet
+      h3 do not drink 7 of these in a night. in NYC.  after warning your whole party how dangerous it is.
+      img src="http://www.venicepaparazzi.com/vp/wp-content/uploads/2011/07/Bosteels_Tripel_Karmeliet.jpg"
+
+    section.slide
+      h2 Remote Matchers e.g. "real" BDD
+      section.slide
+        p a <code>portscan</code> module to scan ports and services (via <a href="https://github.com/sophsec/ruby-nmap">ruby-nmap</a>) in order to determine what's actually running.
+      section.slide
+        ul
+          section.slide
+            li <code>it { should have_open_port 22 }</code>
+          section.slide
+            li <code>it { should only_have_open_ports [22, 443] }</code>
+          section.slide
+            li <code>it { should have_open_port "ssh" }</code>
+          section.slide
+            li <code>it { should have_remote_service "OpenSSH", on_port: 22 }</code>
+          section.slide
+            li <code>it { should have_remote_service_version "OpenSSH", "5.3p1" }</code>
+
+    section.slide
+      h2 Blanche de Chambly
+      h3
+        '(not technically Belgian.. Canadian but Belgian-style)
+      h3 so it's hot but you don't want a Hefeweizen?  Perfect!
+      img src="http://vaguelyvinous.files.wordpress.com/2012/08/blanche_de_chambly.png"
+
+    section.slide
+      h2 Remote Matcher (con't)
+      section.slide
+        h3 a "webapp" module
+      section.slide
+        ul
+          li Actually wraps up a capybara-webkit instance
+          li Write capybara specs and run them against a service that is deployed in the Vagrant instance!
+      section.slide
+        pre
+          | describe "Testing Apache's default landing page", :remote => :true do
+            let(:default_landing_page_copy) { "It works!" }
+              describe webapp(default_url) do
+                it "should have a landing page" do
+                  visit "/"
+                  page.should have_content default_landing_page_copy
+                end
+              end
+            end
+      section.slide
+        ' demo
+
+    section.slide
+      h2 KWAK!
+      h3 have you seen the glass?  From the same brouwerij as Tripel Karmeleit
+      img src="http://twscritic.files.wordpress.com/2011/05/pauwel-kwak-beer.jpg"
+
+    section.slide
+      h2 Upgrade paths
+      section.slide
+        p So your infrastructure is on v1 of your cookbooks, and you want to upgrade to v2 and know that it works...
+        p We can do that with git tags (though it's kinda Hacky/PoC right now)
+      section.slide
+        ' demo
+
+    section.slide
+      h2 Westvleteren
+      h3 Can't buy it in the states except in their special "builder pack".  Go to the monastary to try it!
+      img src="http://farm2.static.flickr.com/1026/1462193438_99910ebb1a.jpg"
+
+    section.slide
+      h2 What needs to be done and can't be now?
+      section.slide
+        pre
+          | ~/some_project_with_vagrant$ cat Gemfile | grep vagabond
+            gem 'vagabond'
+            
+            ~/some_project_with_vagrant$ vagabond
+            # here all your tests verify what's in your Vagrantfile
+
+      section.slide
+        pre
+          | ~/some_project_with_vagrant_and_multiple_hosts_it_spins_up$ vagabond
+            # here all of your tests run _per_ Vagrant host spun up!
+              # think a web-server and a separate database server
+
+    section.slide
+      h2 WAT?
+      p There's this <strong>other</strong> thing called Vagabond that uses Linux containers and does testing and Chef.  It's probably awesome.  I found it last night: <a href="https://github.com/chrisroberts/vagabond">"Other" Vagabond</a>
+
+      /div
+        /img.smallish src="http://www.dmuth.org/files/vagrant_hippie.png"
+        /| Vagabond
+      /div
+        /img.smallish src="http://www.ymc.ch/wp-content/uploads/2013/04/vagrant_module_hero-b1df5d7d.png"
+        /| Vagrant
+
+    // If you've enabled the navigation extension
+    p.deck-navigation
+      a href="#"
+        span.deck-prev-link title="Previous" &#8592;
+      a href="#"
+        span.deck-next-link title="Next" &#8594;
+
+    // If you've enabled the status extension
+    p.deck-status
+      span.deck-status-current
+      |  /
+      span.deck-status-total
+

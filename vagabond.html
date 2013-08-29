@@ -1,0 +1,486 @@
+<head>
+  <title>
+    BDDing your Infrastructure
+  </title>
+  <meta content="using Vagabond to test Vagrant" name="description" />
+  <meta content="David Worth - dave@bignerdranch.com" name="author" />
+  <meta content="width=1024, user-scalable=no" name="viewport" />
+  <script src="js/jquery-1.7.2.min.js"></script>
+  <script src="js/modernizr.custom.js"></script>
+  <link href="core/deck.core.css" rel="stylesheet" />
+  <link href="css/vagabond.css" rel="stylesheet" />
+  <script src="core/deck.core.js"></script>
+  <link href="extensions/goto/deck.goto.css" rel="stylesheet" />
+  <script src="extensions/goto/deck.goto.js"></script>
+  <link href="extensions/hash/deck.hash.css" rel="stylesheet" />
+  <script src="extensions/hash/deck.hash.js"></script>
+  <link href="extensions/navigation/deck.navigation.css" rel="stylesheet" />
+  <script src="extensions/navigation/deck.navigation.js"></script>
+  <link href="extensions/status/deck.status.css" rel="stylesheet" />
+  <script src="extensions/status/deck.status.js"></script>
+  <link href="themes/style/web-2.0.css" rel="stylesheet" />
+  <script type="text/javascript">
+    $(function() { $.deck('.slide'); });
+  </script>
+</head>
+<body>
+  <article class="deck-container">
+    <section class="slide">
+      <center>
+        <h2>
+          BDDing your Infrastructure with Vagabond
+        </h2>
+        <br />
+        <h3>
+          Or how I learned to stop worrying and Love the virtualization
+        </h3>
+        <br />
+        <h4>
+          David Worth - dave@bignerdranch.com
+        </h4>
+        <img class="round" src="http://www.bignerdranch.com/images/bnr-twitter-logo.png" /></center>
+    </section>
+    <section class="slide">
+      <h2>
+        Background
+      </h2>
+      <section class="slide">
+        <p>
+          In a previously life... I was a Cowboy Sysadmin
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          We had loads of Xen VMs all managed by hand.
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          I was pretty good with the duct tape + SVN in order to keep things running
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          Found out about Puppet from @ckdake but it's hard and the team was very resistant.
+        </p>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Not-So-Secret Agenda
+      </h2>
+      <section class="slide">
+        <h3>
+          I also like beer.
+        </h3>
+      </section>
+      <section class="slide">
+        <h4>
+          ... and was asked to do a tech-talk on Belgian Beer
+        </h4>
+      </section>
+      <section class="slide">
+        <h5>
+          ... but I have to drive.
+        </h5>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Better Background
+      </h2>
+      <section class="slide">
+        <p>
+          Came to Highgroove and joined a crazy big analytics problem with a ton of AWS Infrastructure.
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          Lots of Chef and I was bad with it.
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          Even when I got better with it spinning up new hosts would not always work out of the box... 
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          And never on a Saturday when I was alone...
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          "Testing" all of our recipes was
+        </p>
+        <ol>
+          <li>
+            vague
+          </li>
+          <li>
+            not an option.
+          </li>
+        </ol>
+      </section>
+      <section class="slide">
+        <p>
+          and it made me worse/risk averse!
+        </p>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Saison - Saison Dupont
+      </h2>
+      <h3>
+        Delicious summer beer.
+      </h3>
+      <img src="http://www.brasserie-dupont.com/dupont/Images/SaisonDupont.jpg" />
+    </section>
+    <section class="slide">
+      <h2>
+        What do you mean by BDD?
+      </h2>
+      <section class="slide">
+        <p>
+          Probably not what you do...
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          I care that not only are my chef or puppet configurations "correct" but that they actually do the right thing...
+        </p>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Geuze - Drie Fonteinen (Oude Geuze)
+      </h2>
+      <h3>
+        Blended Lambic (open fermented) beer.  Very funky and awesome
+      </h3>
+      <img src="http://www.3fonteinen.be/images/stories/flessen/oude-geuze-thumb.png" />
+    </section>
+    <section class="slide">
+      <h2>
+        So what is "the right thing" in this case?
+      </h2>
+      <ul>
+        <li>
+          Packages are installed
+        </li>
+        <li>
+          The correct <strong>version</strong> of packages are installed.
+        </li>
+        <li>
+          Other packages that should be uninstalled actually <strong>are</strong> uninstalled...
+        </li>
+        <li>
+          Services that should be reachable are actually reachable...
+        </li>
+        <li>
+          Those services are actually running the correct versions!
+        </li>
+        <li>
+          Deployed applications are actually working!
+        </li>
+      </ul>
+    </section>
+    <section class="slide">
+      <h2>
+        Trappist Beers
+      </h2>
+      <h3>
+        Comparing them is hard because they vary so much.
+      </h3>
+      <h3>
+        So my favorite is Westmalle Tripel
+      </h3>
+      <img src="http://www.belgianbeercafe.com/sites/default/files/imagecache/beer_detail/westmalletriple.png" />
+    </section>
+    <section class="slide">
+      <h2>
+        The competition - a literature survey.
+      </h2>
+      <section class="slide">
+        <h3>
+          I'm not the only one to have felt this pain clearly.
+        </h3>
+      </section>
+      <section class="slide">
+        <p>
+          Last year at ArrrrCamp Bernard Grymonpon gave a great talk on <a href="http://vimeo.com/51911896">Testing Chef Recipes</a> - <a href="https://speakerdeck.com/wonko/arrrrcamp-testing-chef">Slidedeck</a>
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          <a href="http://acrmp.github.io/foodcritic/"">Foodcritic</a> - a Linter which seems pretty cool but isn't a tester..  more of a style-guide.  Seems like a Good Thing.
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          <a href="https://github.com/calavera/rspec-chef">Rspec-chef</a> - Doesn't appear super feature complete and last commit Jan 11, 2012
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          <a href="http://acrmp.github.io/chefspec/">chefspec</a> - "ChefSpec runs your cookbook but without actually converging the node that your examples are being executed on." Also seems cool but doesn't meet my needs!
+        </p>
+        <section class="slide">
+          To quote Bernard's talk "feels like testing chef, not the recipe" 
+        </section>
+      </section>
+      <section class="slide">
+        <p>
+          <a href="https://github.com/calavera/minitest-chef-handler">minitest-chef-handler</a> seems a lot like what I was shooting for!
+        </p>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Abbaye Ale - hs nothing to do with the church really
+      </h2>
+      <h3>
+        Everyone knows Leffe (and it's GREAT) but have you tried Grimbergen Blonde
+      </h3>
+      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Grimbergen_blonde_-_verre_et_bouteille.jpg/280px-Grimbergen_blonde_-_verre_et_bouteille.jpg" />
+    </section>
+    <section class="slide">
+      <h2>
+        Vagabond
+      </h2>
+      <section class="slide">
+        <p>
+          As usual, anything I do well someone else actually wrote and I enhance a tiny amount.  Profit!
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          Originally written by @wfarr during his RailsMachine tenure.  He even <a href="https://speakerdeck.com/wfarr/valiantly-validating-vagrant-with-vagabond">talked</a> about it once.
+        </p>
+      </section>
+      <section class="slide">
+        <ul>
+          <li>
+            When I had this idea I bounced it off @alindeman and @vanstee and the latter told me about Vagabond.
+          </li>
+          <li>
+            When I found it there was a pretty extensive TODO list, and it totally didn't do what I really wanted
+          </li>
+          <li>
+            I struggled to get it working... and I struggled to understand how it worked
+          </li>
+          <li>
+            but it was something!
+          </li>
+          <li>
+            and finally I had an ah-ha moment - specs run from the home directory of the guest!
+          </li>
+        </ul>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Flemish Red
+      </h2>
+      <h3>
+        Sour and delicious.  Drink them all.  In particular Rodenbach Grand Cru
+      </h3>
+      <img src="http://refugesc.com/wp-content/uploads/2010/04/rodenbach-grand-cru.jpg" />
+      <h3>
+        but.. if you can find it on draught try Duchesse de Bourgogne
+      </h3>
+    </section>
+    <section class="slide">
+      <h2>
+        Vagabond (con't) - the additions
+      </h2>
+      <section class="slide">
+        <h3>
+          So... what did you do about it?
+        </h3>
+      </section>
+      <section class="slide">
+        <p>
+          I checked off some of the TODO list (there are some hard problems in there! Particularly hard to do in a general way!)
+        </p>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Vagabond (con't) - File contents
+      </h2>
+      <section class="slide">
+        <p>File <code>it { should contain &lt;some content&gt; }</code> - actually a lot harder than it sounds
+        </p>
+      </section>
+      <section class="slide">
+        <p>If you just want a string on a single line <code>file.should contain 'bar'</code> it's not so bad but could be super slow for big files.  You could implement Boyer-Moore.. how has that not been added to StdLib if the Sieve of Erosthosthenes has been?
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          What about regexps?  What about multiline regexps?  On HUGE files?
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          Hard to do "right" (hard to define "right"!)  Not so terrible if you are willing to do something and fail...
+        </p>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Tripel Karmeliet
+      </h2>
+      <h3>
+        do not drink 7 of these in a night. in NYC.  after warning your whole party how dangerous it is.
+      </h3>
+      <img src="http://www.venicepaparazzi.com/vp/wp-content/uploads/2011/07/Bosteels_Tripel_Karmeliet.jpg" />
+    </section>
+    <section class="slide">
+      <h2>
+        Remote Matchers e.g. "real" BDD
+      </h2>
+      <section class="slide">
+        <p>a <code>portscan</code> module to scan ports and services (via <a href="https://github.com/sophsec/ruby-nmap">ruby-nmap</a>) in order to determine what's actually running.
+        </p>
+      </section>
+      <section class="slide">
+        <ul>
+          <section class="slide">
+            <li><code>it { should have_open_port 22 }</code>
+            </li>
+          </section>
+          <section class="slide">
+            <li><code>it { should only_have_open_ports [22, 443] }</code>
+            </li>
+          </section>
+          <section class="slide">
+            <li><code>it { should have_open_port "ssh" }</code>
+            </li>
+          </section>
+          <section class="slide">
+            <li><code>it { should have_remote_service "OpenSSH", on_port: 22 }</code>
+            </li>
+          </section>
+          <section class="slide">
+            <li><code>it { should have_remote_service_version "OpenSSH", "5.3p1" }</code>
+            </li>
+          </section>
+        </ul>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Blanche de Chambly
+      </h2>
+      <h3>
+        (not technically Belgian.. Canadian but Belgian-style) 
+      </h3>
+      <h3>
+        so it's hot but you don't want a Hefeweizen?  Perfect!
+      </h3>
+      <img src="http://vaguelyvinous.files.wordpress.com/2012/08/blanche_de_chambly.png" />
+    </section>
+    <section class="slide">
+      <h2>
+        Remote Matcher (con't)
+      </h2>
+      <section class="slide">
+        <h3>
+          a "webapp" module
+        </h3>
+      </section>
+      <section class="slide">
+        <ul>
+          <li>
+            Actually wraps up a capybara-webkit instance
+          </li>
+          <li>
+            Write capybara specs and run them against a service that is deployed in the Vagrant instance!
+          </li>
+        </ul>
+      </section>
+      <section class="slide">
+        <pre>describe "Testing Apache's default landing page", :remote => :true do
+let(:default_landing_page_copy) { "It works!" }
+  describe webapp(default_url) do
+    it "should have a landing page" do
+      visit "/"
+      page.should have_content default_landing_page_copy
+    end
+  end
+end</pre>
+      </section>
+      <section class="slide">
+        demo 
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        KWAK!
+      </h2>
+      <h3>
+        have you seen the glass?  From the same brouwerij as Tripel Karmeleit
+      </h3>
+      <img src="http://twscritic.files.wordpress.com/2011/05/pauwel-kwak-beer.jpg" />
+    </section>
+    <section class="slide">
+      <h2>
+        Upgrade paths
+      </h2>
+      <section class="slide">
+        <p>
+          So your infrastructure is on v1 of your cookbooks, and you want to upgrade to v2 and know that it works...
+        </p>
+        <p>
+          We can do that with git tags (though it's kinda Hacky/PoC right now)
+        </p>
+      </section>
+      <section class="slide">
+        demo 
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Westvleteren
+      </h2>
+      <h3>
+        Can't buy it in the states except in their special "builder pack".  Go to the monastary to try it!
+      </h3>
+      <img src="http://farm2.static.flickr.com/1026/1462193438_99910ebb1a.jpg" />
+    </section>
+    <section class="slide">
+      <h2>
+        What needs to be done and can't be now?
+      </h2>
+      <section class="slide">
+        <pre>~/some_project_with_vagrant$ cat Gemfile | grep vagabond
+gem 'vagabond'
+
+~/some_project_with_vagrant$ vagabond
+# here all your tests verify what's in your Vagrantfile</pre>
+      </section>
+      <section class="slide">
+        <pre>~/some_project_with_vagrant_and_multiple_hosts_it_spins_up$ vagabond
+# here all of your tests run _per_ Vagrant host spun up!
+  # think a web-server and a separate database server</pre>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        WAT?
+      </h2>
+      <p>
+        There's this <strong>other</strong> thing called Vagabond that uses Linux containers and does testing and Chef.  It's probably awesome.  I found it last night: <a href="https://github.com/chrisroberts/vagabond">"Other" Vagabond</a>
+      </p>
+    </section>
+    <p class="deck-navigation">
+      <a href="#"><span class="deck-prev-link" title="Previous">&#8592;</span></a><a href="#"><span class="deck-next-link" title="Next">&#8594;</span></a>
+    </p>
+    <p class="deck-status">
+      <span class="deck-status-current"></span> /<span class="deck-status-total"></span>
+    </p>
+  </article>
+</body>
