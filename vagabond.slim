@@ -109,13 +109,15 @@ body
 
     section.slide
       h2 So what is "the right thing" in this case?
-      ul
-        li Packages are installed
-        li The correct <strong>version</strong> of packages are installed.
-        li Other packages that should be uninstalled actually <strong>are</strong> uninstalled...
-        li Services that should be reachable are actually reachable...
-        li Those services are actually running the correct versions!
-        li Deployed applications are actually working!
+      h3 After using a "devOps" platform (Chef, Puppet, etc.) on some servers we would want...
+      section.slide
+        ul
+          li Packages are installed
+          li The correct <strong>version</strong> of packages are installed.
+          li Other packages that should be uninstalled actually <strong>are</strong> uninstalled...
+          li Services that should be reachable are actually reachable...
+          li Those services are actually running the correct versions!
+          li Deployed applications are actually working!
 
     section.slide
       h2 Trappist Beers
@@ -142,7 +144,7 @@ body
         p <a href="https://github.com/calavera/minitest-chef-handler">minitest-chef-handler</a> seems a lot like what I was shooting for!
 
     section.slide
-      h2 Abbaye Ale - hs nothing to do with the church really
+      h2 Abbaye Ale - has nothing to do with the church really
       h3 Everyone knows Leffe (and it's GREAT) but have you tried...
       section.slide
         h3 Grimbergen Blonde
@@ -155,7 +157,9 @@ body
       section.slide
         h2 Profit!
       section.slide
-        p Originally written by @wfarr during his RailsMachine tenure.  He even <a href="https://speakerdeck.com/wfarr/valiantly-validating-vagrant-with-vagabond">talked</a> about it once.
+        p Originally written by <a href="https://twitter.com/wfarr">@wfarr</a> during his RailsMachine tenure.  He even <a href="https://speakerdeck.com/wfarr/valiantly-validating-vagrant-with-vagabond">talked</a> about it once.
+      section.slide
+        p It's a framework for creating new virtual machines with <a href="http://vagrantup.com">Vagrant</a> and testing them!
 
     section.slide
       h2 Vagabond (con't)
@@ -318,6 +322,13 @@ body
 
     section.slide
       h1 Thanks!
+
+    section.slide
+      h2 Links
+      ul
+        li <a href="http://vagrantup.com">Vagrant</a>
+        li <a href="http://github.com/daveworth/vagabond">Vagabond</a> (my fork)
+        li <a href="http://github.com/daveworth/vagabond_example_chef">vagabond_example_chef</a> - my example chef libraries for upgrade path stuff
 
       /div
         /img.smallish src="http://www.dmuth.org/files/vagrant_hippie.png"
