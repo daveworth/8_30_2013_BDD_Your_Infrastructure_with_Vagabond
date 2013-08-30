@@ -29,9 +29,9 @@ head
   link rel="stylesheet" href="extensions/status/deck.status.css"
   script src="extensions/status/deck.status.js"
 
-  link rel="stylesheet" href="themes/style/web-2.0.css"
+  /link rel="stylesheet" href="themes/style/web-2.0.css"
   /link rel="stylesheet" href="themes/style/swiss.css"
-  /link rel="stylesheet" href="themes/style/neon.css"
+  link rel="stylesheet" href="themes/style/neon.css"
 
   /link rel="stylesheet" href="themes/transition/horizontal-slide.css"
   /link rel="stylesheet" href="themes/transition/vertical-slide.css"
@@ -57,7 +57,7 @@ body
     section.slide
       h2 Background
       section.slide
-        p In a previously life... I was a Cowboy Sysadmin
+        h3 In a previously life... I was a Cowboy Sysadmin
       section.slide
         p We had loads of Xen VMs all managed by hand.
       section.slide
@@ -77,7 +77,7 @@ body
     section.slide
       h2 Better Background
       section.slide
-        p Came to Highgroove and joined a crazy big analytics problem with a ton of AWS Infrastructure.
+        h3 Came to Highgroove and joined a crazy big analytics problem with a ton of AWS Infrastructure.
       section.slide
         p Lots of Chef and I was bad with it.
       section.slide
@@ -87,27 +87,25 @@ body
       section.slide
         p "Testing" all of our recipes was
         ol
-          li vague
+          li vague as to how ...
           li not an option.
       section.slide
         p and it made me worse/risk averse!
 
     section.slide
-      h2 Saison - Saison Dupont
+      h2 Saison
       h3 Delicious summer beer.
-      img src="http://www.brasserie-dupont.com/dupont/Images/SaisonDupont.jpg"
+      section.slide
+        img src="images/saison_dupont.jpg"
+        h3 Saison Dupont
+        h4 The gold standard in Saisons
 
     section.slide
       h2 What do you mean by BDD?
       section.slide
-        p Probably not what you do...
+       h3 Probably not what you do...
       section.slide
         p I care that not only are my chef or puppet configurations "correct" but that they actually do the right thing...
-
-    section.slide
-      h2 Geuze - Drie Fonteinen (Oude Geuze)
-      h3 Blended Lambic (open fermented) beer.  Very funky and awesome
-      img src="http://www.3fonteinen.be/images/stories/flessen/oude-geuze-thumb.png"
 
     section.slide
       h2 So what is "the right thing" in this case?
@@ -122,8 +120,9 @@ body
     section.slide
       h2 Trappist Beers
       h3 Comparing them is hard because they vary so much.
-      h3 So my favorite is Westmalle Tripel
-      img src="http://www.belgianbeercafe.com/sites/default/files/imagecache/beer_detail/westmalletriple.png"
+      section.slide
+        h3 So my favorite is Westmalle Tripel
+        img src="images/westmalletripel.png"
 
     section.slide
       h2 The competition - a literature survey.
@@ -144,28 +143,35 @@ body
 
     section.slide
       h2 Abbaye Ale - hs nothing to do with the church really
-      h3 Everyone knows Leffe (and it's GREAT) but have you tried Grimbergen Blonde
-      img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Grimbergen_blonde_-_verre_et_bouteille.jpg/280px-Grimbergen_blonde_-_verre_et_bouteille.jpg"
+      h3 Everyone knows Leffe (and it's GREAT) but have you tried...
+      section.slide
+        h3 Grimbergen Blonde
+        img src="images/grimbergen-blonde.jpg"
 
     section.slide
       h2 Vagabond
       section.slide
-        p As usual, anything I do well someone else actually wrote and I enhance a tiny amount.  Profit!
+        h3 As usual, anything I do well someone else actually wrote and I enhance a tiny amount.
+      section.slide
+        h2 Profit!
       section.slide
         p Originally written by @wfarr during his RailsMachine tenure.  He even <a href="https://speakerdeck.com/wfarr/valiantly-validating-vagrant-with-vagabond">talked</a> about it once.
-      section.slide
-        ul
-          li When I had this idea I bounced it off @alindeman and @vanstee and the latter told me about Vagabond.
-          li When I found it there was a pretty extensive TODO list, and it totally didn't do what I really wanted
-          li I struggled to get it working... and I struggled to understand how it worked
-          li but it was something!
-          li and finally I had an ah-ha moment - specs run from the home directory of the guest!
+
+    section.slide
+      h2 Vagabond (con't)
+      ul
+        li When I had this idea I bounced it off @alindeman and @vanstee and the latter told me about Vagabond.
+        li When I found it there was a pretty extensive TODO list, and it totally didn't do what I really wanted
+        li I struggled to get it working... and I struggled to understand how it worked but it was something!
+        li and finally I had an ah-ha moment - specs run from the home directory of the guest!
 
     section.slide
       h2 Flemish Red
-      h3 Sour and delicious.  Drink them all.  In particular Rodenbach Grand Cru
-      img src="http://refugesc.com/wp-content/uploads/2010/04/rodenbach-grand-cru.jpg"
-      h3 but.. if you can find it on draught try Duchesse de Bourgogne
+      h3 Sour and delicious.  Drink them all.
+      section.slide
+        h4 In particular Rodenbach Grand Cru
+        img src="images/rodenbach-grand-cru.jpg"
+        h4 but.. if you can find it on draught try Duchesse de Bourgogne
 
     section.slide
       h2 Vagabond (con't) - the additions
@@ -177,24 +183,39 @@ body
     section.slide
       h2 Vagabond (con't) - File contents
       section.slide
-        p File <code>it { should contain &lt;some content&gt; }</code> - actually a lot harder than it sounds
+        p Given a file the following is harder than it seems:
+        pre
+          ' it { should contain "some content" }</code>
       section.slide
-        p If you just want a string on a single line <code>file.should contain 'bar'</code> it's not so bad but could be super slow for big files.  You could implement Boyer-Moore.. how has that not been added to StdLib if the Sieve of Erosthosthenes has been?
+        p If you just want a string on a single line it's not so bad but could be super slow for big files.
+      section.slide
+        p You could implement Boyer-Moore...
+      section.slide
+        p
+          ' (how has that not been added to StdLib if the Sieve of Eratosthenes has been?)
       section.slide
         p What about regexps?  What about multiline regexps?  On HUGE files?
       section.slide
         p Hard to do "right" (hard to define "right"!)  Not so terrible if you are willing to do something and fail...
 
     section.slide
-      h2 Tripel Karmeliet
-      h3 do not drink 7 of these in a night. in NYC.  after warning your whole party how dangerous it is.
-      img src="http://www.venicepaparazzi.com/vp/wp-content/uploads/2011/07/Bosteels_Tripel_Karmeliet.jpg"
+      h2 Tripel
+      h3 Super delicious strong beer...
+      img src="images/tripel_karmeliet.jpg"
+      h3 Tripel Karmeliet
+      section.slide
+        h4 do not drink 7 of these in a night.
+      section.slide
+        h4 in NYC.
+      section.slide
+        h4 after warning your whole party how dangerous it is.
+      section.slide
+        h4 seriously.
 
     section.slide
       h2 Remote Matchers e.g. "real" BDD
       section.slide
         p a <code>portscan</code> module to scan ports and services (via <a href="https://github.com/sophsec/ruby-nmap">ruby-nmap</a>) in order to determine what's actually running.
-      section.slide
         ul
           section.slide
             li <code>it { should have_open_port 22 }</code>
@@ -208,11 +229,13 @@ body
             li <code>it { should have_remote_service_version "OpenSSH", "5.3p1" }</code>
 
     section.slide
-      h2 Blanche de Chambly
-      h3
-        '(not technically Belgian.. Canadian but Belgian-style)
+      h2 Belgian White
       h3 so it's hot but you don't want a Hefeweizen?  Perfect!
-      img src="http://vaguelyvinous.files.wordpress.com/2012/08/blanche_de_chambly.png"
+      section.slide
+        img src="images/blanche_de_chambly.png"
+        h3 Blanche de Chambly
+        h4
+          '(not technically Belgian.. Canadian but Belgian-style)
 
     section.slide
       h2 Remote Matcher (con't)
@@ -238,21 +261,25 @@ body
 
     section.slide
       h2 KWAK!
-      h3 have you seen the glass?  From the same brouwerij as Tripel Karmeleit
-      img src="http://twscritic.files.wordpress.com/2011/05/pauwel-kwak-beer.jpg"
+      img src="images/kwak.jpg"
+      section.slide
+        h3 have you seen the glass?!?!  It's also delicious.
+      section.slide
+        h4 From the same brouwerij as Tripel Karmeleit
 
     section.slide
       h2 Upgrade paths
       section.slide
-        p So your infrastructure is on v1 of your cookbooks, and you want to upgrade to v2 and know that it works...
-        p We can do that with git tags (though it's kinda Hacky/PoC right now)
+        h3 So your infrastructure is on <code>v1</code> of your cookbooks, and you want to upgrade to <code>v2</code> and know that it works...
+      section.slide
+        h4 We can do that with git tags (though it's kinda Hacky/PoC right now)
       section.slide
         ' demo
 
     section.slide
       h2 Westvleteren
       h3 Can't buy it in the states except in their special "builder pack".  Go to the monastary to try it!
-      img src="http://farm2.static.flickr.com/1026/1462193438_99910ebb1a.jpg"
+      img src="images/westvleteren.jpg"
 
     section.slide
       h2 What needs to be done and can't be now?
@@ -271,8 +298,26 @@ body
               # think a web-server and a separate database server
 
     section.slide
-      h2 WAT?
-      p There's this <strong>other</strong> thing called Vagabond that uses Linux containers and does testing and Chef.  It's probably awesome.  I found it last night: <a href="https://github.com/chrisroberts/vagabond">"Other" Vagabond</a>
+      h2 Geuze
+      h3 Blended Lambic (open/spontaneously fermented) beer.  Very funky and VERY awesome
+      section.slide
+        img src="images/oude-geuze.png"
+        h3 Drie Fonteinen - Oude Geuze
+      section.slide
+        h4 or if you're <strong>super</strong> daring try Doesjel
+
+    section.slide
+      h2 A final word on motivation:
+      section.slide
+        h3 Remember, if your specs are clean and concise you are not only testing but building an infrastructure specification for your servers!
+      section.slide
+        h3 Just like good tests for your applications.
+
+    section.slide
+      h1 Questions?
+
+    section.slide
+      h1 Thanks!
 
       /div
         /img.smallish src="http://www.dmuth.org/files/vagrant_hippie.png"

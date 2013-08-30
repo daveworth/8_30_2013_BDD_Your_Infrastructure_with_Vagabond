@@ -18,7 +18,7 @@
   <script src="extensions/navigation/deck.navigation.js"></script>
   <link href="extensions/status/deck.status.css" rel="stylesheet" />
   <script src="extensions/status/deck.status.js"></script>
-  <link href="themes/style/web-2.0.css" rel="stylesheet" />
+  <link href="themes/style/neon.css" rel="stylesheet" />
   <script type="text/javascript">
     $(function() { $.deck('.slide'); });
   </script>
@@ -45,9 +45,9 @@
         Background
       </h2>
       <section class="slide">
-        <p>
+        <h3>
           In a previously life... I was a Cowboy Sysadmin
-        </p>
+        </h3>
       </section>
       <section class="slide">
         <p>
@@ -90,9 +90,9 @@
         Better Background
       </h2>
       <section class="slide">
-        <p>
+        <h3>
           Came to Highgroove and joined a crazy big analytics problem with a ton of AWS Infrastructure.
-        </p>
+        </h3>
       </section>
       <section class="slide">
         <p>
@@ -115,7 +115,7 @@
         </p>
         <ol>
           <li>
-            vague
+            vague as to how ...
           </li>
           <li>
             not an option.
@@ -130,36 +130,35 @@
     </section>
     <section class="slide">
       <h2>
-        Saison - Saison Dupont
+        Saison
       </h2>
       <h3>
         Delicious summer beer.
       </h3>
-      <img src="http://www.brasserie-dupont.com/dupont/Images/SaisonDupont.jpg" />
+      <section class="slide">
+        <img src="images/saison_dupont.jpg" />
+        <h3>
+          Saison Dupont
+        </h3>
+        <h4>
+          The gold standard in Saisons
+        </h4>
+      </section>
     </section>
     <section class="slide">
       <h2>
         What do you mean by BDD?
       </h2>
       <section class="slide">
-        <p>
+        <h3>
           Probably not what you do...
-        </p>
+        </h3>
       </section>
       <section class="slide">
         <p>
           I care that not only are my chef or puppet configurations "correct" but that they actually do the right thing...
         </p>
       </section>
-    </section>
-    <section class="slide">
-      <h2>
-        Geuze - Drie Fonteinen (Oude Geuze)
-      </h2>
-      <h3>
-        Blended Lambic (open fermented) beer.  Very funky and awesome
-      </h3>
-      <img src="http://www.3fonteinen.be/images/stories/flessen/oude-geuze-thumb.png" />
     </section>
     <section class="slide">
       <h2>
@@ -193,10 +192,12 @@
       <h3>
         Comparing them is hard because they vary so much.
       </h3>
-      <h3>
-        So my favorite is Westmalle Tripel
-      </h3>
-      <img src="http://www.belgianbeercafe.com/sites/default/files/imagecache/beer_detail/westmalletriple.png" />
+      <section class="slide">
+        <h3>
+          So my favorite is Westmalle Tripel
+        </h3>
+        <img src="images/westmalletripel.png" />
+      </section>
     </section>
     <section class="slide">
       <h2>
@@ -241,55 +242,70 @@
         Abbaye Ale - hs nothing to do with the church really
       </h2>
       <h3>
-        Everyone knows Leffe (and it's GREAT) but have you tried Grimbergen Blonde
+        Everyone knows Leffe (and it's GREAT) but have you tried...
       </h3>
-      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Grimbergen_blonde_-_verre_et_bouteille.jpg/280px-Grimbergen_blonde_-_verre_et_bouteille.jpg" />
+      <section class="slide">
+        <h3>
+          Grimbergen Blonde
+        </h3>
+        <img src="images/grimbergen-blonde.jpg" />
+      </section>
     </section>
     <section class="slide">
       <h2>
         Vagabond
       </h2>
       <section class="slide">
-        <p>
-          As usual, anything I do well someone else actually wrote and I enhance a tiny amount.  Profit!
-        </p>
+        <h3>
+          As usual, anything I do well someone else actually wrote and I enhance a tiny amount.
+        </h3>
+      </section>
+      <section class="slide">
+        <h2>
+          Profit!
+        </h2>
       </section>
       <section class="slide">
         <p>
           Originally written by @wfarr during his RailsMachine tenure.  He even <a href="https://speakerdeck.com/wfarr/valiantly-validating-vagrant-with-vagabond">talked</a> about it once.
         </p>
       </section>
-      <section class="slide">
-        <ul>
-          <li>
-            When I had this idea I bounced it off @alindeman and @vanstee and the latter told me about Vagabond.
-          </li>
-          <li>
-            When I found it there was a pretty extensive TODO list, and it totally didn't do what I really wanted
-          </li>
-          <li>
-            I struggled to get it working... and I struggled to understand how it worked
-          </li>
-          <li>
-            but it was something!
-          </li>
-          <li>
-            and finally I had an ah-ha moment - specs run from the home directory of the guest!
-          </li>
-        </ul>
-      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        Vagabond (con't)
+      </h2>
+      <ul>
+        <li>
+          When I had this idea I bounced it off @alindeman and @vanstee and the latter told me about Vagabond.
+        </li>
+        <li>
+          When I found it there was a pretty extensive TODO list, and it totally didn't do what I really wanted
+        </li>
+        <li>
+          I struggled to get it working... and I struggled to understand how it worked but it was something!
+        </li>
+        <li>
+          and finally I had an ah-ha moment - specs run from the home directory of the guest!
+        </li>
+      </ul>
     </section>
     <section class="slide">
       <h2>
         Flemish Red
       </h2>
       <h3>
-        Sour and delicious.  Drink them all.  In particular Rodenbach Grand Cru
+        Sour and delicious.  Drink them all.
       </h3>
-      <img src="http://refugesc.com/wp-content/uploads/2010/04/rodenbach-grand-cru.jpg" />
-      <h3>
-        but.. if you can find it on draught try Duchesse de Bourgogne
-      </h3>
+      <section class="slide">
+        <h4>
+          In particular Rodenbach Grand Cru
+        </h4>
+        <img src="images/rodenbach-grand-cru.jpg" />
+        <h4>
+          but.. if you can find it on draught try Duchesse de Bourgogne
+        </h4>
+      </section>
     </section>
     <section class="slide">
       <h2>
@@ -311,11 +327,24 @@
         Vagabond (con't) - File contents
       </h2>
       <section class="slide">
-        <p>File <code>it { should contain &lt;some content&gt; }</code> - actually a lot harder than it sounds
+        <p>
+          Given a file the following is harder than it seems:
+        </p>
+        <pre>it { should contain "some content" }</code> </pre>
+      </section>
+      <section class="slide">
+        <p>
+          If you just want a string on a single line it's not so bad but could be super slow for big files.
         </p>
       </section>
       <section class="slide">
-        <p>If you just want a string on a single line <code>file.should contain 'bar'</code> it's not so bad but could be super slow for big files.  You could implement Boyer-Moore.. how has that not been added to StdLib if the Sieve of Erosthosthenes has been?
+        <p>
+          You could implement Boyer-Moore...
+        </p>
+      </section>
+      <section class="slide">
+        <p>
+          (how has that not been added to StdLib if the Sieve of Eratosthenes has been?) 
         </p>
       </section>
       <section class="slide">
@@ -331,12 +360,35 @@
     </section>
     <section class="slide">
       <h2>
-        Tripel Karmeliet
+        Tripel
       </h2>
       <h3>
-        do not drink 7 of these in a night. in NYC.  after warning your whole party how dangerous it is.
+        Super delicious strong beer...
       </h3>
-      <img src="http://www.venicepaparazzi.com/vp/wp-content/uploads/2011/07/Bosteels_Tripel_Karmeliet.jpg" />
+      <img src="images/tripel_karmeliet.jpg" />
+      <h3>
+        Tripel Karmeliet
+      </h3>
+      <section class="slide">
+        <h4>
+          do not drink 7 of these in a night.
+        </h4>
+      </section>
+      <section class="slide">
+        <h4>
+          in NYC.
+        </h4>
+      </section>
+      <section class="slide">
+        <h4>
+          after warning your whole party how dangerous it is.
+        </h4>
+      </section>
+      <section class="slide">
+        <h4>
+          seriously.
+        </h4>
+      </section>
     </section>
     <section class="slide">
       <h2>
@@ -345,8 +397,6 @@
       <section class="slide">
         <p>a <code>portscan</code> module to scan ports and services (via <a href="https://github.com/sophsec/ruby-nmap">ruby-nmap</a>) in order to determine what's actually running.
         </p>
-      </section>
-      <section class="slide">
         <ul>
           <section class="slide">
             <li><code>it { should have_open_port 22 }</code>
@@ -373,15 +423,20 @@
     </section>
     <section class="slide">
       <h2>
-        Blanche de Chambly
+        Belgian White
       </h2>
-      <h3>
-        (not technically Belgian.. Canadian but Belgian-style) 
-      </h3>
       <h3>
         so it's hot but you don't want a Hefeweizen?  Perfect!
       </h3>
-      <img src="http://vaguelyvinous.files.wordpress.com/2012/08/blanche_de_chambly.png" />
+      <section class="slide">
+        <img src="images/blanche_de_chambly.png" />
+        <h3>
+          Blanche de Chambly
+        </h3>
+        <h4>
+          (not technically Belgian.. Canadian but Belgian-style) 
+        </h4>
+      </section>
     </section>
     <section class="slide">
       <h2>
@@ -421,22 +476,30 @@ end</pre>
       <h2>
         KWAK!
       </h2>
-      <h3>
-        have you seen the glass?  From the same brouwerij as Tripel Karmeleit
-      </h3>
-      <img src="http://twscritic.files.wordpress.com/2011/05/pauwel-kwak-beer.jpg" />
+      <img src="images/kwak.jpg" />
+      <section class="slide">
+        <h3>
+          have you seen the glass?!?!  It's also delicious.
+        </h3>
+      </section>
+      <section class="slide">
+        <h4>
+          From the same brouwerij as Tripel Karmeleit
+        </h4>
+      </section>
     </section>
     <section class="slide">
       <h2>
         Upgrade paths
       </h2>
       <section class="slide">
-        <p>
-          So your infrastructure is on v1 of your cookbooks, and you want to upgrade to v2 and know that it works...
-        </p>
-        <p>
+        <h3>So your infrastructure is on <code>v1</code> of your cookbooks, and you want to upgrade to <code>v2</code> and know that it works...
+        </h3>
+      </section>
+      <section class="slide">
+        <h4>
           We can do that with git tags (though it's kinda Hacky/PoC right now)
-        </p>
+        </h4>
       </section>
       <section class="slide">
         demo 
@@ -449,7 +512,7 @@ end</pre>
       <h3>
         Can't buy it in the states except in their special "builder pack".  Go to the monastary to try it!
       </h3>
-      <img src="http://farm2.static.flickr.com/1026/1462193438_99910ebb1a.jpg" />
+      <img src="images/westvleteren.jpg" />
     </section>
     <section class="slide">
       <h2>
@@ -470,11 +533,47 @@ gem 'vagabond'
     </section>
     <section class="slide">
       <h2>
-        WAT?
+        Geuze
       </h2>
-      <p>
-        There's this <strong>other</strong> thing called Vagabond that uses Linux containers and does testing and Chef.  It's probably awesome.  I found it last night: <a href="https://github.com/chrisroberts/vagabond">"Other" Vagabond</a>
-      </p>
+      <h3>
+        Blended Lambic (open/spontaneously fermented) beer.  Very funky and VERY awesome
+      </h3>
+      <section class="slide">
+        <img src="images/oude-geuze.png" />
+        <h3>
+          Drie Fonteinen - Oude Geuze
+        </h3>
+      </section>
+      <section class="slide">
+        <h4>
+          or if you're <strong>super</strong> daring try Doesjel
+        </h4>
+      </section>
+    </section>
+    <section class="slide">
+      <h2>
+        A final word on motivation:
+      </h2>
+      <section class="slide">
+        <h3>
+          Remember, if your specs are clean and concise you are not only testing but building an infrastructure specification for your servers!
+        </h3>
+      </section>
+      <section class="slide">
+        <h3>
+          Just like good tests for your applications.
+        </h3>
+      </section>
+    </section>
+    <section class="slide">
+      <h1>
+        Questions?
+      </h1>
+    </section>
+    <section class="slide">
+      <h1>
+        Thanks!
+      </h1>
     </section>
     <p class="deck-navigation">
       <a href="#"><span class="deck-prev-link" title="Previous">&#8592;</span></a><a href="#"><span class="deck-next-link" title="Next">&#8594;</span></a>
