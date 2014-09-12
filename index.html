@@ -38,17 +38,15 @@
         <h4>
           David Worth - dave@bignerdranch.com
         </h4>
-        <img class="round" src="http://www.bignerdranch.com/images/bnr-twitter-logo.png" /></center>
+        <img class="round" src="images/bnr-logo.png" /></center>
     </section>
     <section class="slide">
       <h2>
         Background
       </h2>
-      <section class="slide">
-        <h3>
-          In a previously life... I was a Cowboy Sysadmin
-        </h3>
-      </section>
+      <h3>
+        In a previously life... I was a Cowboy Sysadmin
+      </h3>
       <section class="slide">
         <p>
           We had loads of Xen VMs all managed by hand.
@@ -69,11 +67,9 @@
       <h2>
         Not-So-Secret Agenda
       </h2>
-      <section class="slide">
-        <h3>
-          I also like beer.
-        </h3>
-      </section>
+      <h3>
+        I also like beer.
+      </h3>
       <section class="slide">
         <h4>
           ... and was asked to do a tech-talk on Belgian Beer
@@ -149,11 +145,9 @@
       <h2>
         What do you mean by BDD?
       </h2>
-      <section class="slide">
-        <h3>
-          Probably not what you do...
-        </h3>
-      </section>
+      <h3>
+        Probably not what you do...
+      </h3>
       <section class="slide">
         <p>
           I care that not only are my chef or puppet configurations "correct" but that they actually do the right thing...
@@ -208,11 +202,9 @@
       <h2>
         The competition - a literature survey.
       </h2>
-      <section class="slide">
-        <h3>
-          I'm not the only one to have felt this pain clearly.
-        </h3>
-      </section>
+      <h3>
+        I'm not the only one to have felt this pain clearly.
+      </h3>
       <section class="slide">
         <p>
           Last year at ArrrrCamp Bernard Grymonpon gave a great talk on <a href="http://vimeo.com/51911896">Testing Chef Recipes</a> - <a href="https://speakerdeck.com/wonko/arrrrcamp-testing-chef">Slidedeck</a>
@@ -260,11 +252,9 @@
       <h2>
         Vagabond
       </h2>
-      <section class="slide">
-        <h3>
-          As usual, anything I do well someone else actually wrote and I enhance a tiny amount.
-        </h3>
-      </section>
+      <h3>
+        As usual, anything I do well someone else actually wrote and I enhance a tiny amount.
+      </h3>
       <section class="slide">
         <h2>
           Profit!
@@ -321,11 +311,9 @@
       <h2>
         Vagabond (con't) - the additions
       </h2>
-      <section class="slide">
-        <h3>
-          So... what did you do about it?
-        </h3>
-      </section>
+      <h3>
+        So... what did you do about it?
+      </h3>
       <section class="slide">
         <p>
           I checked off some of the TODO list (there are some hard problems in there! Particularly hard to do in a general way!)
@@ -336,12 +324,10 @@
       <h2>
         Vagabond (con't) - File contents
       </h2>
-      <section class="slide">
-        <p>
-          Given a file the following is harder than it seems:
-        </p>
-        <pre>it { should contain "some content" }</code> </pre>
-      </section>
+      <p>
+        Given a file the following is harder than it seems:
+      </p>
+      <pre>it { should contain "some content" }</code> </pre>
       <section class="slide">
         <p>
           If you just want a string on a single line it's not so bad but could be super slow for big files.
@@ -404,32 +390,30 @@
       <h2>
         Remote Matchers e.g. "real" BDD
       </h2>
-      <section class="slide">
-        <p>a <code>portscan</code> module to scan ports and services (via <a href="https://github.com/sophsec/ruby-nmap">ruby-nmap</a>) in order to determine what's actually running.
-        </p>
-        <ul>
-          <section class="slide">
-            <li><code>it { should have_open_port 22 }</code>
-            </li>
-          </section>
-          <section class="slide">
-            <li><code>it { should only_have_open_ports [22, 443] }</code>
-            </li>
-          </section>
-          <section class="slide">
-            <li><code>it { should have_open_port "ssh" }</code>
-            </li>
-          </section>
-          <section class="slide">
-            <li><code>it { should have_remote_service "OpenSSH", on_port: 22 }</code>
-            </li>
-          </section>
-          <section class="slide">
-            <li><code>it { should have_remote_service_version "OpenSSH", "5.3p1" }</code>
-            </li>
-          </section>
-        </ul>
-      </section>
+      <p>a <code>portscan</code> module to scan ports and services (via <a href="https://github.com/sophsec/ruby-nmap">ruby-nmap</a>) in order to determine what's actually running.
+      </p>
+      <ul>
+        <section class="slide">
+          <li><code>it { should have_open_port 22 }</code>
+          </li>
+        </section>
+        <section class="slide">
+          <li><code>it { should only_have_open_ports [22, 443] }</code>
+          </li>
+        </section>
+        <section class="slide">
+          <li><code>it { should have_open_port "ssh" }</code>
+          </li>
+        </section>
+        <section class="slide">
+          <li><code>it { should have_remote_service "OpenSSH", on_port: 22 }</code>
+          </li>
+        </section>
+        <section class="slide">
+          <li><code>it { should have_remote_service_version "OpenSSH", "5.3p1" }</code>
+          </li>
+        </section>
+      </ul>
     </section>
     <section class="slide">
       <h2>
@@ -452,11 +436,9 @@
       <h2>
         Remote Matcher (con't)
       </h2>
-      <section class="slide">
-        <h3>
-          a "webapp" module
-        </h3>
-      </section>
+      <h3>
+        a "webapp" module
+      </h3>
       <section class="slide">
         <ul>
           <li>
@@ -502,10 +484,8 @@ end</pre>
       <h2>
         Upgrade paths
       </h2>
-      <section class="slide">
-        <h3>So your infrastructure is on <code>v1</code> of your cookbooks, and you want to upgrade to <code>v2</code> and know that it works...
-        </h3>
-      </section>
+      <h3>So your infrastructure is on <code>v1</code> of your cookbooks, and you want to upgrade to <code>v2</code> and know that it works...
+      </h3>
       <section class="slide">
         <h4>
           We can do that with git tags (though it's kinda Hacky/PoC right now)
@@ -528,13 +508,11 @@ end</pre>
       <h2>
         What needs to be done and can't be now?
       </h2>
-      <section class="slide">
-        <pre>~/some_project_with_vagrant$ cat Gemfile | grep vagabond
+      <pre>~/some_project_with_vagrant$ cat Gemfile | grep vagabond
 gem 'vagabond'
 
 ~/some_project_with_vagrant$ vagabond
 # here all your tests verify what's in your Vagrantfile</pre>
-      </section>
       <section class="slide">
         <pre>~/some_project_with_vagrant_and_multiple_hosts_it_spins_up$ vagabond
 # here all of your tests run _per_ Vagrant host spun up!
@@ -564,11 +542,9 @@ gem 'vagabond'
       <h2>
         A final word on motivation:
       </h2>
-      <section class="slide">
-        <h3>
-          Remember, if your specs are clean and concise you are not only testing but building an infrastructure specification for your servers!
-        </h3>
-      </section>
+      <h3>
+        Remember, if your specs are clean and concise you are not only testing but building an infrastructure specification for your servers!
+      </h3>
       <section class="slide">
         <h3>
           Just like good tests for your applications.
